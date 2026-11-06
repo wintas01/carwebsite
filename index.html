@@ -486,11 +486,23 @@ a.primary{text-decoration:none;display:inline-block}
 .brand-marquee{height:110px!important}
 #inventory.section{padding-top:22px}
 @media(max-width:600px){.trustrow.trust-showcase{padding-bottom:4px!important}.brand-marquee{height:90px!important}#inventory.section{padding-top:18px}}
+
+/* Header without top bar; collapse to menu below 1024px so it never gets cramped */
+header{top:0!important}
+.navright .signin,.navright .sell{white-space:nowrap}
+.mobile-panel{top:100%!important}
+@media(max-width:1024px){
+ .navlinks,.navright .sell{display:none!important}
+ .mobilemenu{display:block!important;padding:6px 4px;line-height:1}
+ .navright{gap:10px}
+ .mobile-panel{padding:8px 24px 18px}
+}
+@media(max-width:600px){header{height:62px}.brand{font-size:22px}.navright .signin{padding:10px 13px}.mobile-panel{padding:6px 16px 16px}}
+.brand>span:last-child{margin-left:-9px}
 </style>
 </head>
 <body>
 <div class="site-shell">
-<div class="topbar"><div class="wrap"><span>HAND-PICKED CARS · PERSONALLY INSPECTED</span><div class="toplinks"><span>Mon–Sat · 9am–7pm</span><a class="toplink-wa" href="#" data-wa="Hi Motiv, I'm interested in one of your cars.">WhatsApp</a><strong data-phone-text>+234 800 000 0000</strong></div></div></div>
 <header><div class="wrap nav">
 <a class="brand" href="#"><span class="brandmark">M</span>motiv<span style="color:var(--coral)">.</span></a>
 <nav class="navlinks"><a href="#inventory">Cars for sale</a><a href="#how">How I work</a><a href="#sell">Sell or swap</a><a href="#about">Contact</a></nav>
@@ -641,7 +653,6 @@ window.addEventListener('hashchange',routeFromHash);
 function applySettings(){
  const q=s=>document.querySelector(s),qa=s=>document.querySelectorAll(s),esc=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
  document.title=`${S.brand} — Find your next drive`;
- q('.topbar .wrap>span').textContent=S.tagline;q('.toplinks>span').textContent=S.hours;
  qa('.brand').forEach(b=>b.innerHTML=`<span class="brandmark">${esc(S.brand.charAt(0).toUpperCase())}</span>${esc(S.brand.toLowerCase())}<span style="color:var(--coral)">.</span>`);
  q('.hero .eyebrow').textContent=S.heroEyebrow;
  q('.hero h1').innerHTML=`${esc(S.heroTitle)} <span style="color:var(--coral)">${esc(S.heroAccent)}</span>`;
