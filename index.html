@@ -451,7 +451,7 @@ a.primary{text-decoration:none;display:inline-block}
 .cd-tips h3 svg{width:17px;height:17px;color:#d9a21b}
 .cd-tips ul{margin:0;padding-left:18px;font-size:12px;line-height:1.7;color:#555}
 .cd-tips li{margin-bottom:5px}
-.cd-similar{grid-column:1/-1}
+.cd-similar{padding:6px 0 70px}.cd-grid{padding-bottom:28px}
 .cd-similar .cars{grid-template-columns:repeat(3,1fr)}
 .cd-mobilebar{display:none}
 @media(max-width:900px){
@@ -463,7 +463,8 @@ a.primary{text-decoration:none;display:inline-block}
 @media(max-width:600px){
  .cd-bar .wrap{height:56px;gap:10px}
  .cd-back span{display:none}
- .cd-grid{padding:12px 0 96px;gap:12px}
+ .cd-grid{padding:12px 0 16px;gap:12px}
+ .cd-similar{padding-bottom:110px}
  .cd-card{padding:16px;border-radius:10px}
  .cd-gallery{padding:0}
  .cd-stage{aspect-ratio:4/3}
@@ -569,8 +570,8 @@ a.primary{text-decoration:none;display:inline-block}
     <ul><li>Inspect the car in person — bring your mechanic if you like.</li><li>Check the papers: customs documents, proof of ownership and registration.</li><li>Only pay after inspection, and only into the official business account.</li></ul>
    </div>
   </aside>
-  <section class="cd-similar"><h2 class="cd-h" style="font-size:22px">You might also like</h2><div class="cars" id="cdSimilar"></div></section>
  </div>
+ <section class="wrap cd-similar"><h2 class="cd-h" style="font-size:22px">You might also like</h2><div class="cars" id="cdSimilar"></div></section>
  <div class="cd-mobilebar"><a class="cd-btn call" id="cdCallM" href="#">Call</a><a class="cd-btn wa" id="cdWaM" href="#" target="_blank" rel="noopener">WhatsApp</a></div>
 </div>
 <div class="compare-bar" id="compareBar"><span><strong id="compareCount">0 cars</strong> selected to compare</span><button class="compare-open" onclick="showComparison()">Compare now</button><button class="compare-clear" onclick="clearCompare()">Clear</button></div><div class="modal-backdrop" id="compareModal" onclick="if(event.target===this)closeComparison()"><div class="modal"><div class="modal-body"><div class="modal-top"><div><div class="kicker">Side by side</div><h2>Compare your shortlist</h2></div><button class="close" onclick="closeComparison()">×</button></div><div class="compare-scroll" id="compareContent"></div></div></div></div><div class="toast" id="toast"></div>
