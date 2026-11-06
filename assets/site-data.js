@@ -19,6 +19,9 @@ const SETTINGS={
  heroTag:'BMW 5 Series',
  stat1:'150+',stat1Label:'CARS DELIVERED',stat2:'100%',stat2Label:'PERSONALLY INSPECTED',stat3:'1-on-1',stat3Label:'DIRECT ON WHATSAPP',
  sellerSold:'150+',sellerYears:'6 yrs',sellerRating:'4.9★',
+ ownerPhoto:'',ownerRole:'Owner',verified:true,
+ tipsTitle:'Before you pay',
+ tips:'Inspect the car in person — bring your mechanic if you like.\nCheck the papers: customs documents, proof of ownership and registration.\nOnly pay after inspection, and only into the official business account.',
  negotiable:'Slightly negotiable',
  showSell:true,showCompare:true,showSold:true,
  brands:BRANDS.map(b=>b[0])

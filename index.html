@@ -5,6 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#111c2b">
 <title>Motiv — Find your next drive</title>
+<meta name="description" content="Hand-picked, personally inspected cars in Lagos. Clear prices, honest details and no middlemen — chat directly on WhatsApp.">
+<link rel="canonical" href="https://wintas01.github.io/carwebsite/">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Motiv">
+<meta property="og:title" content="Motiv — Find the car that feels like yours">
+<meta property="og:description" content="Hand-picked, personally inspected cars in Lagos. Clear prices, honest details and no middlemen — chat directly on WhatsApp.">
+<meta property="og:url" content="https://wintas01.github.io/carwebsite/">
+<meta property="og:image" content="https://wintas01.github.io/carwebsite/assets/og-image.jpg">
+<meta property="og:image:secure_url" content="https://wintas01.github.io/carwebsite/assets/og-image.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Motiv — hand-picked cars, personally inspected">
+<meta property="og:locale" content="en_NG">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Motiv — Find the car that feels like yours">
+<meta name="twitter:description" content="Hand-picked, personally inspected cars in Lagos. Clear prices, honest details and no middlemen — chat directly on WhatsApp.">
+<meta name="twitter:image" content="https://wintas01.github.io/carwebsite/assets/og-image.jpg">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap');
@@ -499,6 +519,68 @@ header{top:0!important}
 }
 @media(max-width:600px){header{height:62px}.brand{font-size:22px}.navright .signin{padding:10px 13px}.mobile-panel{padding:6px 16px 16px}}
 .brand>span:last-child{margin-left:-9px}
+
+.cd-avatar{overflow:hidden}.cd-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* ===== Readability pass: larger body text (headings unchanged) ===== */
+body{font-size:15px}
+.navlinks a{font-size:14px}
+.sell,.signin{font-size:12px!important}
+.hero .eyebrow{font-size:11px}
+.hero p{font-size:16px!important;line-height:1.7!important;max-width:460px!important}
+.hero .primary,.hero .textlink{font-size:13px}
+.meta span{font-size:11px!important}
+.hero-tag small{font-size:10px}
+.searchhead span{font-size:13px}
+.field label{font-size:11px}
+.field select,.field input{font-size:14px}
+.searchbtn{font-size:13px}
+.trust-benefits span{font-size:13px}
+.brand-item span{font-size:12px}
+.kicker{font-size:11px}
+.sub{font-size:15px}
+.viewall{font-size:13px}
+.chip{font-size:13px;padding:10px 16px}
+.inventory-top span{font-size:13px}.inventory-top select{font-size:13px}
+.year{font-size:12.5px}
+.specs{font-size:12.5px}
+.tag{font-size:10px}
+.compare-check{font-size:12px}
+.details{font-size:12.5px}
+.empty{font-size:15px}
+.promo p{font-size:15.5px;line-height:1.75}
+.promo-points span{font-size:12.5px}
+.promo .primary{font-size:13px}
+.sell-banner p{font-size:15px}
+.sell-banner .primary{font-size:13px}
+.footgrid p{font-size:14px;line-height:1.75}
+.footgrid a{font-size:14px}
+.footgrid h4{font-size:12px}
+.copyright{font-size:12.5px}
+.toast{font-size:14px}
+.compare-bar span{font-size:13px}.compare-bar button{font-size:12px}
+.compare-table{font-size:13px}.compare-table th{font-size:10.5px}
+.mobile-panel a{font-size:15px}
+.cd-back{font-size:13px}.cd-crumbs{font-size:13px}
+.cd-sub{font-size:13px}.cd-pill{font-size:11.5px}
+.cd-quick strong{font-size:15px}.cd-quick small{font-size:10.5px}
+.cd-specs div{font-size:14px}
+.cd-desc{font-size:15px}
+.cd-feats span{font-size:13px}
+.cd-price small{font-size:11.5px}.cd-price .neg{font-size:13px}
+.cd-btn{font-size:14px}
+.cd-offer input{font-size:15px}.cd-offer button{font-size:13px}
+.cd-seller small{font-size:13px}
+.cd-stats span{font-size:11.5px}
+.cd-tips h3{font-size:16px}.cd-tips ul{font-size:14px;line-height:1.65}
+@media(max-width:600px){
+ .hero p{font-size:15px!important}
+ .trust-benefits span{font-size:12px}
+ .sub{font-size:14px}
+ .chip{font-size:12.5px;padding:9px 13px}
+ .field select,.field input{font-size:16px}
+ .footgrid p,.footgrid a{font-size:13.5px}
+}
 </style>
 </head>
 <body>
@@ -612,8 +694,8 @@ let activeFilter='All',searchState={make:'',budget:'',body:'',location:''},saved
 const naira=n=>'₦'+n.toLocaleString('en-NG');
 const waLink=msg=>`https://wa.me/${OWNER.whatsapp}?text=${encodeURIComponent(msg)}`;
 const carName=v=>`${v.year} ${v.make} ${v.model}`;
-function cardHTML(v){const st=v.status&&v.status!=='Available'?v.status:'';return `<article class="car-card${st?' is-'+st.toLowerCase():''}"><div class="car-photo" onclick="openCar(${v.id})" style="cursor:pointer"><img src="${v.img}" alt="${v.make} ${v.model}" loading="lazy"><span class="tag${st?' tag-'+st.toLowerCase():''}">${st||v.tag}</span></div><div class="car-info"><div class="car-title"><div><h3>${v.make} ${v.model}</h3><div class="year">${v.year} · ${v.condition}</div></div><div class="price">${naira(v.price)}</div></div><div class="specs"><span>${v.mileage}</span><span>${v.trans}</span><span>${v.body}</span></div><div class="card-bottom"><label class="compare-check"><input type="checkbox" onchange="toggleCompare(${v.id},this)" ${compareIds.includes(v.id)?"checked":""}> Compare</label><button class="details" onclick="openCar(${v.id})">VIEW DETAILS&nbsp; ↗</button></div></div></article>`}
-function renderCars(){let list=vehicles.filter(v=>(activeFilter==='All'||v.body===activeFilter||(activeFilter==='Under ₦20m'&&v.price<20000000))&&(!searchState.make||v.make===searchState.make)&&(!searchState.budget||v.price<=+searchState.budget)&&(!searchState.body||v.body===searchState.body)&&(!searchState.location||v.condition===searchState.location));let sort=document.getElementById('sort').value;if(sort==='low')list.sort((a,b)=>a.price-b.price);if(sort==='high')list.sort((a,b)=>b.price-a.price);if(sort==='new')list.sort((a,b)=>b.year-a.year);document.getElementById('count').textContent=`Showing ${list.length} ${list.length===1?'car':'cars'}${searchState.make?' · '+searchState.make:''}`;const want=searchState.make||'this kind of car';document.getElementById('cars').innerHTML=list.length?list.map(cardHTML).join(''):`<div class="empty">No ${searchState.make||'cars'} in stock that match right now.<br><br>I can source ${want==='this kind of car'?'one':'a '+want} for you — <a href="${waLink(`Hi ${S.brand}, can you source a ${want} for me?`)}" target="_blank" rel="noopener">message me on WhatsApp</a> or <a href="#inventory" onclick="resetFilters()">see all cars</a>.</div>`;if(window.IntersectionObserver){const ob=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');ob.unobserve(e.target)}}),{threshold:.1});document.querySelectorAll('#cars .car-card').forEach(el=>{el.classList.add('reveal');ob.observe(el)})}}
+function cardHTML(v,noCompare){const st=v.status&&v.status!=='Available'?v.status:'';return `<article class="car-card${st?' is-'+st.toLowerCase():''}"><div class="car-photo" onclick="openCar(${v.id})" style="cursor:pointer"><img src="${v.img}" alt="${v.make} ${v.model}" loading="lazy"><span class="tag${st?' tag-'+st.toLowerCase():''}">${st||v.tag}</span></div><div class="car-info"><div class="car-title"><div><h3>${v.make} ${v.model}</h3><div class="year">${v.year} · ${v.condition}</div></div><div class="price">${naira(v.price)}</div></div><div class="specs"><span>${v.mileage}</span><span>${v.trans}</span><span>${v.body}</span></div><div class="card-bottom">${noCompare?'<span></span>':`<label class="compare-check"><input type="checkbox" onchange="toggleCompare(${v.id},this)" ${compareIds.includes(v.id)?"checked":""}> Compare</label>`}<button class="details" onclick="openCar(${v.id})">VIEW DETAILS&nbsp; ↗</button></div></div></article>`}
+function renderCars(){let list=vehicles.filter(v=>(activeFilter==='All'||v.body===activeFilter||(activeFilter==='Under ₦20m'&&v.price<20000000))&&(!searchState.make||v.make===searchState.make)&&(!searchState.budget||v.price<=+searchState.budget)&&(!searchState.body||v.body===searchState.body)&&(!searchState.location||v.condition===searchState.location));let sort=document.getElementById('sort').value;if(sort==='low')list.sort((a,b)=>a.price-b.price);if(sort==='high')list.sort((a,b)=>b.price-a.price);if(sort==='new')list.sort((a,b)=>b.year-a.year);document.getElementById('count').textContent=`Showing ${list.length} ${list.length===1?'car':'cars'}${searchState.make?' · '+searchState.make:''}`;const want=searchState.make||'this kind of car';document.getElementById('cars').innerHTML=list.length?list.map(v=>cardHTML(v)).join(''):`<div class="empty">No ${searchState.make||'cars'} in stock that match right now.<br><br>I can source ${want==='this kind of car'?'one':'a '+want} for you — <a href="${waLink(`Hi ${S.brand}, can you source a ${want} for me?`)}" target="_blank" rel="noopener">message me on WhatsApp</a> or <a href="#inventory" onclick="resetFilters()">see all cars</a>.</div>`;if(window.IntersectionObserver){const ob=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');ob.unobserve(e.target)}}),{threshold:.1});document.querySelectorAll('#cars .car-card').forEach(el=>{el.classList.add('reveal');ob.observe(el)})}}
 function filterMake(make){activeFilter='All';searchState={make:'',budget:'',body:'',location:''};['make','budget','body','location'].forEach(id=>document.getElementById(id).value='');searchState.make=make;const sel=document.getElementById('make');if([...sel.options].some(o=>o.text===make))sel.value=make;document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('active',c.dataset.filter==='All'));renderCars();document.querySelector('#inventory').scrollIntoView({behavior:'smooth'})}
 
 /* ----- Car detail page ----- */
@@ -640,7 +722,7 @@ function renderDetail(v){cdCar=v;cdIdx=0;
  $('cdThumbs').innerHTML=v.imgs.length>1?v.imgs.map((src,i)=>`<button onclick="cdShow(${i})" aria-label="Photo ${i+1}"><img src="${src}" alt="" loading="lazy"></button>`).join(''):'';
  document.querySelectorAll('.cd-nav').forEach(b=>b.style.display=v.imgs.length>1?'':'none');
  const sim=vehicles.filter(x=>x.id!==v.id).sort((a,b)=>(b.body===v.body)-(a.body===v.body)||Math.abs(a.price-v.price)-Math.abs(b.price-v.price)).slice(0,3);
- $('cdSimilar').innerHTML=sim.map(cardHTML).join('');
+ $('cdSimilar').innerHTML=sim.map(v=>cardHTML(v,true)).join('');
  cdShow(0)}
 function cdShow(i){const v=cdCar,n=v.imgs.length;cdIdx=(i+n)%n;const img=document.getElementById('cdImg');img.src=v.imgs[cdIdx];img.alt=`${carName(v)} — photo ${cdIdx+1}`;document.getElementById('cdBadge').textContent=v.condition;document.getElementById('cdCount').textContent=`${cdIdx+1} / ${n}`;document.querySelectorAll('#cdThumbs button').forEach((b,j)=>b.classList.toggle('on',j===cdIdx));const t=document.querySelectorAll('#cdThumbs button')[cdIdx];t&&t.scrollIntoView({block:'nearest',inline:'center'})}
 function cdGo(d){cdShow(cdIdx+d)}
@@ -667,9 +749,11 @@ function applySettings(){
  foot.forEach(a=>{const t=a.textContent.trim();if(t==='Instagram'||t==='TikTok'){const u=S[t.toLowerCase()];a.style.display=u?'':'none';if(u)a.href=u}});
  const addr=foot.find(a=>a.getAttribute('href')==='#about');if(addr)addr.textContent=S.address;
  q('.copyright span').textContent=`© ${new Date().getFullYear()} ${S.brand}. All rights reserved.`;
- q('.cd-avatar').textContent=S.ownerName.charAt(0).toUpperCase();
- q('.cd-seller strong').firstChild.textContent=S.ownerName+' ';
- q('.cd-seller small').textContent='Owner · '+S.replyTime;
+ const av=q('.cd-avatar');if(S.ownerPhoto){av.innerHTML=`<img src="${esc(S.ownerPhoto)}" alt="${esc(S.ownerName)}">`}else{av.textContent=S.ownerName.charAt(0).toUpperCase()}
+ q('.cd-seller strong').firstChild.textContent=S.ownerName+' ';q('.cd-seller strong svg').style.display=S.verified?'':'none';
+ q('.cd-seller small').textContent=[S.ownerRole,S.replyTime].filter(Boolean).join(' · ');
+ const tips=String(S.tips||'').split('\n').map(t=>t.trim()).filter(Boolean);q('.cd-tips').style.display=tips.length?'':'none';q('.cd-tips ul').innerHTML=tips.map(t=>`<li>${esc(t)}</li>`).join('');
+ q('.cd-tips h3').lastChild.textContent=S.tipsTitle||'Before you pay';
  qa('.cd-stats b').forEach((b,i)=>b.textContent=[S.sellerSold,S.sellerYears,S.sellerRating][i]);
  if(!S.showSell){q('#sell').style.display='none';qa('a[href="#sell"],.navright .sell').forEach(a=>a.style.display='none')}
  document.body.classList.toggle('no-compare',!S.showCompare);

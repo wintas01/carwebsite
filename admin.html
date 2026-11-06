@@ -178,6 +178,7 @@ tbody tr:hover{background:#fcfcfb}
 .hero-prev p{color:#cfd0d3;font-size:12px;line-height:1.7;margin:0 0 16px;max-width:420px}
 .hero-prev .m{display:flex;gap:22px}
 .hero-prev .m b{display:block;font:700 17px Outfit}.hero-prev .m i{font-style:normal;font-size:9px;color:#aaa;letter-spacing:.04em}
+.photo-row{display:flex;align-items:center;gap:14px}.pf{width:64px;height:64px;border-radius:50%;background:#111;color:#fff;display:grid;place-items:center;font:800 24px Outfit;overflow:hidden;flex:0 0 auto}.pf img{width:100%;height:100%;object-fit:cover}
 .dzone{border:1px solid #f0c4bf;background:#fffafa}
 .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);background:#111;color:#fff;padding:12px 18px;border-radius:9px;font-size:13px;opacity:0;pointer-events:none;transition:.25s;z-index:200;max-width:calc(100% - 30px);text-align:center}
 .toast.show{opacity:1;transform:translate(-50%,0)}
@@ -331,8 +332,7 @@ tbody tr:hover{background:#fcfcfb}
     <div class="grid">
      <div class="card"><h2>Business</h2><p class="hint">Your brand, as buyers see it.</p>
       <div class="grid">
-       <div class="row2"><div class="field"><label>Brand name</label><input data-k="brand"><small>Shown in the logo and page title.</small></div><div class="field"><label>Your name (seller card)</label><input data-k="ownerName"></div></div>
-       <div class="field"><label>Reply time</label><input data-k="replyTime"></div>
+       <div class="field"><label>Brand name</label><input data-k="brand"><small>Shown in the logo and page title.</small></div>
       </div>
      </div>
      <div class="card"><h2>Contact</h2><p class="hint">Every call and WhatsApp button uses these.</p>
@@ -348,10 +348,20 @@ tbody tr:hover{background:#fcfcfb}
      <div class="card"><h2>Social links</h2><p class="hint">Empty links are hidden from the footer.</p>
       <div class="grid"><div class="field"><label>Instagram</label><input data-k="instagram" placeholder="https://instagram.com/yourpage"></div><div class="field"><label>TikTok</label><input data-k="tiktok" placeholder="https://tiktok.com/@yourpage"></div></div>
      </div>
+     <div class="card" id="sellerCard"><h2>Seller card</h2><p class="hint">The “about you” box on every car’s page.</p>
+      <div class="grid">
+       <div class="photo-row"><div class="pf" id="pfPrev"></div><div style="display:flex;gap:8px;flex-wrap:wrap"><label class="btn ghost sm" style="cursor:pointer">Upload photo<input type="file" accept="image/*" hidden onchange="setOwnerPhoto(this)"></label><button type="button" class="btn ghost sm" onclick="clearOwnerPhoto()">Remove</button></div><input type="hidden" data-k="ownerPhoto"></div>
+       <div class="row2"><div class="field"><label>Name on card</label><input data-k="ownerName"></div><div class="field"><label>Role</label><input data-k="ownerRole" placeholder="e.g. Owner, Founder"></div></div>
+       <div class="field"><label>Reply time</label><input data-k="replyTime"></div>
+       <label class="toggle" style="padding:6px 0"><div><strong>Blue verified tick</strong><span>Shown next to your name.</span></div><span class="switch"><input type="checkbox" data-k="verified"><i></i></span></label>
+       <div class="row3"><div class="field"><label>Cars sold</label><input data-k="sellerSold"></div><div class="field"><label>Years</label><input data-k="sellerYears"></div><div class="field"><label>Rating</label><input data-k="sellerRating"></div></div>
+      </div>
+     </div>
      <div class="card"><h2>Car page</h2><p class="hint">Shown on every car’s detail page.</p>
       <div class="grid">
        <div class="field"><label>Price note</label><input data-k="negotiable"><small>Under the price, e.g. “Slightly negotiable” or “Fixed price”.</small></div>
-       <div class="row3"><div class="field"><label>Cars sold</label><input data-k="sellerSold"></div><div class="field"><label>Years</label><input data-k="sellerYears"></div><div class="field"><label>Rating</label><input data-k="sellerRating"></div></div>
+       <div class="field"><label>Safety box title</label><input data-k="tipsTitle"></div>
+       <div class="field"><label>Safety tips</label><textarea data-k="tips" style="min-height:120px"></textarea><small>One tip per line. Leave empty to hide the box.</small></div>
       </div>
      </div>
      <div class="card"><h2>Account</h2><p class="hint">Sign-in details for this admin panel.</p>
@@ -504,7 +514,7 @@ function renderPhotos(){
  +`<label class="ph-add" for="edFile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3.2"/><path d="M17 3v4M15 5h4"/></svg>Upload photos</label>`}
 function movePh(a,b){const [x]=edImgs.splice(a,1);edImgs.splice(b,0,x);renderPhotos()}
 function addUrl(){const u=$('edUrl').value.trim();if(!/^https?:\/\/|^assets\//.test(u)){toast('Paste a full image link starting with https://');return}edImgs.push(u);$('edUrl').value='';renderPhotos()}
-function compress(file){return new Promise((res,rej)=>{const img=new Image(),url=URL.createObjectURL(file);img.onload=()=>{const max=1280,r=Math.min(1,max/Math.max(img.width,img.height)),c=document.createElement('canvas');c.width=Math.round(img.width*r);c.height=Math.round(img.height*r);c.getContext('2d').drawImage(img,0,0,c.width,c.height);URL.revokeObjectURL(url);res(c.toDataURL('image/jpeg',.78))};img.onerror=rej;img.src=url})}
+function compress(file,max=1280){return new Promise((res,rej)=>{const img=new Image(),url=URL.createObjectURL(file);img.onload=()=>{r=Math.min(1,max/Math.max(img.width,img.height)),c=document.createElement('canvas');c.width=Math.round(img.width*r);c.height=Math.round(img.height*r);c.getContext('2d').drawImage(img,0,0,c.width,c.height);URL.revokeObjectURL(url);res(c.toDataURL('image/jpeg',.78))};img.onerror=rej;img.src=url})}
 async function addFiles(inp){const files=[...inp.files];if(!files.length)return;toast(`Adding ${files.length} photo${files.length>1?'s':''}…`);for(const f of files){try{edImgs.push(await compress(f))}catch(e){}}inp.value='';renderPhotos()}
 function renderFeats(){$('edFeats').innerHTML=edFeats.map((f,i)=>`<span>${esc(f)}<button type="button" aria-label="Remove ${esc(f)}" onclick="edFeats.splice(${i},1);renderFeats()">✕</button></span>`).join('')}
 function addFeat(){const el=$('f-feat'),t=el.value.trim();if(t){t.split(',').map(s=>s.trim()).filter(Boolean).forEach(s=>edFeats.push(s));el.value='';renderFeats()}el.focus()}
@@ -529,13 +539,16 @@ let dirty=false;
 function fillForms(){
  document.querySelectorAll('[data-k]').forEach(el=>{const v=ST[el.dataset.k];if(el.type==='checkbox')el.checked=!!v;else el.value=v??''});
  $('brandGrid').innerHTML=M.BRANDS.map(([n,f])=>`<label class="bchk"><input type="checkbox" value="${esc(n)}" ${ST.brands.includes(n)?'checked':''}><img src="assets/logos/${f}.svg" alt="">${esc(n)}</label>`).join('');
- heroPreview();setDirty(false)}
+ heroPreview();ownerPrev();setDirty(false)}
 function readForms(){document.querySelectorAll('[data-k]').forEach(el=>ST[el.dataset.k]=el.type==='checkbox'?el.checked:el.value.trim());ST.brands=[...document.querySelectorAll('#brandGrid input:checked')].map(i=>i.value)}
 function heroPreview(){const g=k=>esc(document.querySelector(`[data-k="${k}"]`).value);$('heroPrev').innerHTML=`<small>${g('heroEyebrow')}</small><h3>${g('heroTitle')} <span>${g('heroAccent')}</span></h3><p>${g('heroText')}</p><div class="m">${[1,2,3].map(i=>`<div><b>${g('stat'+i)}</b><i>${g('stat'+i+'Label')}</i></div>`).join('')}</div>`}
 function setDirty(d){dirty=d;document.querySelectorAll('.savebar').forEach(b=>b.classList.toggle('show',d))}
-document.querySelectorAll('[data-form]').forEach(f=>{f.addEventListener('input',()=>{setDirty(true);if(f.closest('[data-view="homepage"]'))heroPreview()});f.addEventListener('change',()=>setDirty(true))});
+document.querySelectorAll('[data-form]').forEach(f=>{f.addEventListener('input',e=>{setDirty(true);if(f.closest('[data-view="homepage"]'))heroPreview();if(e.target.dataset.k==='ownerName')ownerPrev()});f.addEventListener('change',()=>setDirty(true))});
 function saveSettings(){readForms();ST.whatsapp=ST.whatsapp.replace(/\D/g,'');if(persist({settings:ST})){setDirty(false);brandBits();toast('Saved — refresh the website to see it.')}}
 function discard(silent){ST=JSON.parse(JSON.stringify(Object.assign({},M.DEFAULT_SETTINGS,(JSON.parse(localStorage.getItem(M.KEY)||'{}').settings)||{})));fillForms();if(silent!==true)toast('Changes discarded.')}
+function ownerPrev(){const v=document.querySelector('[data-k="ownerPhoto"]').value,n=document.querySelector('[data-k="ownerName"]').value||'M';$('pfPrev').innerHTML=v?`<img src="${esc(v)}" alt="">`:esc(n.charAt(0).toUpperCase())}
+async function setOwnerPhoto(inp){const f=inp.files[0];if(!f)return;try{const el=document.querySelector('[data-k="ownerPhoto"]');el.value=await compress(f,400);ownerPrev();setDirty(true)}catch(e){toast('Could not read that image.')}inp.value=''}
+function clearOwnerPhoto(){document.querySelector('[data-k="ownerPhoto"]').value='';ownerPrev();setDirty(true)}
 function setAllBrands(on){document.querySelectorAll('#brandGrid input').forEach(i=>i.checked=on);setDirty(true)}
 function testWa(){const n=document.querySelector('[data-k="whatsapp"]').value.replace(/\D/g,'');window.open(`https://wa.me/${n}?text=${encodeURIComponent('Test from my website admin ✅')}`,'_blank','noopener')}
 window.addEventListener('beforeunload',e=>{if(dirty){e.preventDefault();e.returnValue=''}});
